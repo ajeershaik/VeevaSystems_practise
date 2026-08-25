@@ -1,0 +1,77 @@
+# Veeva System – Document Lock Management System
+
+A simple Java-based **Document Lock Management System** that demonstrates core Java concepts such as `HashMap`, `ArrayList`, `Iterator`, `LocalDateTime`, and `Duration`.
+
+## Features
+
+* Request a lock for a document.
+* Prevent multiple users from locking the same document.
+* Release an active document lock.
+* Automatically expire locks based on a specified duration.
+* Display all currently active locks.
+* Calculate lock duration using timestamps in seconds.
+
+## Technologies Used
+
+* Java
+* Collections (`HashMap`, `ArrayList`)
+* `LocalDateTime`
+* `Duration`
+* `Iterator`
+* `BufferedReader`
+
+## How It Works
+
+Each document lock stores:
+
+* `doc_id` – Document identifier
+* `user_id` – User who requested the lock
+* `timestamp` – Time at which the lock was created
+
+Locks are stored using:
+
+```java
+HashMap<String, List<Document>>
+```
+
+The system calculates the elapsed time using:
+
+```java
+Duration.between(oldTimestamp, currentTimestamp).getSeconds();
+```
+
+If the elapsed time is greater than or equal to the specified duration, the lock is expired and removed.
+
+## Menu Options
+
+```text
+0 - Exit
+1 - Request Lock
+2 - Release Lock
+3 - Expire All Locks
+4 - Display Active Locks
+```
+
+## Concepts Practiced
+
+* Object-Oriented Programming
+* HashMap and ArrayList
+* Iterator-based removal
+* Date and time handling
+* Exception handling
+* Menu-driven console application
+* Basic lock management logic
+
+## How to Run
+
+Compile:
+
+```bash
+javac LockManagement.java
+```
+
+Run:
+
+```bash
+java -cp . LockManagement
+```
